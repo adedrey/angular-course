@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
+    <div class="container">
+        <a class="navbar-brand" style="cursor: pointer">Recipe Book</a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" *ngIf="isAuthenticated">
+                    <a class="nav-link" role="button" routerLinkActive ="active"  [routerLink] = "['/recipes']">Recipes</a>
+                </li>
+                <li class="nav-item" >
+                    <a class="nav-link" role="button" routerLinkActive ="active" [routerLink] = "['/shopping-list']">Shopping List</a>
+                </li>
+                <li class="nav-item" *ngIf="!isAuthenticated">
+                    <a class="nav-link" role="button" routerLinkActive = "active" [routerLink] = "['/auth']" >Authenticate</a>
+                </li>
+                <li class="nav-item" *ngIf="isAuthenticated" (click)="onLogout()">
+                    <a role="button" style="cursor: pointer"  class="nav-link">Logout</a>
+                </li>
+                <li class="nav-item dropdown" appNavDir #r = "appNavDir" *ngIf="isAuthenticated">
+                    <a style="cursor: pointer" class="nav-link dropdown-toggle" data-toggle="dropdown">Manage</a>
+                    <div class="dropdown-menu" [ngClass] = "{'show' : r.isOpen}">
+                        <a style="cursor: pointer" class="dropdown-item" (click) = "onSaveRecipes()">Save Data</a>
+                        <a style="cursor: pointer" class="dropdown-item" (click) = "onFetchRecipes()">Fetch Data</a>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>

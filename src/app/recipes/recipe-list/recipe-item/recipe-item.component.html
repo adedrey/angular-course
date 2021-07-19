@@ -1,0 +1,9 @@
+<div style="cursor: pointer" class="media mb-2 px-1 py-1 border rounded border-dark" routerLinkActive = "active"  [routerLink] = "['/recipes', index]">
+
+  <div class="media-body">
+    <h5>{{ recipe.name }}</h5>
+    {{ recipe.description }}
+    <br>
+  </div>
+  <img class="mr-3 align-self-start rounded-circle" style="width: 90px; height : 90px" [src]="recipe.imagePath">
+</div>
